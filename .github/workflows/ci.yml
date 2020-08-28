@@ -63,4 +63,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cat "jkasldf;s" > texto
+        script: echo "jkasldf;s" > texto
