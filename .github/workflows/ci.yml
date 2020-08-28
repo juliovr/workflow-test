@@ -46,11 +46,11 @@ jobs:
       run: docker build -t workflow-test .
       
     - name: Tag container
-      run: |
+      run: docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
           #docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:${{ github.sha }}
-        docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
+          #docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
 
     - name: push package
-      run: |
+      run: docker push docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
           #docker push docker.pkg.github.com/juliovr/workflow-test/workflow-test:${{ github.sha }}
-        docker push docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
+          #docker push docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
