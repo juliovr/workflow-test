@@ -10,6 +10,7 @@ import (
 
 func main() {
     fmt.Println("Init server")
+    fmt.Println("...")
     r := mux.NewRouter()
     log.Fatal(http.ListenAndServe(":8003", r))
 }
