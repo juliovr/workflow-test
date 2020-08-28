@@ -27,3 +27,17 @@ jobs:
 
       #- name: Test
       #run: go test -v .
+
+    - name: Docker login github
+      run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build container
+      run: |
+        docker tag workflow-test ${{ secrets.DOCKER_USER }}/workflow-test:${{ github.sha }}
+        docker tag workflow-test ${{ secrets.DOCKER_USER }}/workflow-test:latest
+
+    - name: push package
+      run: |
+        docker push ${{ secrets.DOCKER_USER }}/workflow-test:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_USER }}/workflow-test:latest
+    
