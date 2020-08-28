@@ -33,11 +33,11 @@ jobs:
 
     - name: Build container
       run: |
-        docker tag workflow-test ${{ secrets.DOCKER_USER }}/workflow-test:${{ github.sha }}
-        docker tag workflow-test ${{ secrets.DOCKER_USER }}/workflow-test:latest
+        docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:${{ github.sha }}
+        docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
 
     - name: push package
       run: |
-        docker push ${{ secrets.DOCKER_USER }}/workflow-test:${{ github.sha }}
-        docker push ${{ secrets.DOCKER_USER }}/workflow-test:latest
+        docker push docker.pkg.github.com/juliovr/workflow-test/workflow-test:${{ github.sha }}
+        docker push docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
     
