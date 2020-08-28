@@ -29,7 +29,7 @@ jobs:
       #run: go test -v .
 
     - name: Login to GitHub Package Registry
-      run: docker login docker.pkg.github.com -u ${{ github.repository_owner }} -p ${{ secrets.GITHUB_TOKEN }}
+      run: docker login docker.pkg.github.com -u ${{ github.repository }} -p ${{ secrets.GITHUB_TOKEN }}
       #uses: docker/login-action@v1
       #with:
       #  registry: docker.pkg.github.com
@@ -37,6 +37,9 @@ jobs:
       #  password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build container
+      run: docker build -t workflow-test .
+      
+    - name: Tag container
       run: |
         docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:${{ github.sha }}
         docker tag workflow-test docker.pkg.github.com/juliovr/workflow-test/workflow-test:latest
